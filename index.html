@@ -1,0 +1,2146 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bharat Defence Command 🇮🇳</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Tiro+Devanagari+Hindi&family=Bebas+Neue&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ══════════════════════════════════════════
+       CSS VARIABLES & RESET
+    ══════════════════════════════════════════ */
+    :root {
+      --saffron:   #FF6200;
+      --white:     #F5F5F0;
+      --green:     #138808;
+      --dark-bg:   #080C14;
+      --card-bg:   #0E1420;
+      --border:    #1C2535;
+      --text-dim:  #8A9BB5;
+      --gold:      #D4A017;
+      --red:       #CC0000;
+      --glow-s:    0 0 18px rgba(255,98,0,0.35);
+      --glow-g:    0 0 18px rgba(19,136,8,0.35);
+      --font-head: 'Bebas Neue', sans-serif;
+      --font-body: 'Rajdhani', sans-serif;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background-color: var(--dark-bg);
+      color: var(--white);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    img { display: block; max-width: 100%; }
+    button { cursor: pointer; font-family: var(--font-body); }
+
+    /* ══════════════════════════════════════════
+       SCROLLBAR
+    ══════════════════════════════════════════ */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--dark-bg); }
+    ::-webkit-scrollbar-thumb {
+      background: var(--saffron);
+      border-radius: 3px;
+    }
+
+    /* ══════════════════════════════════════════
+       TRICOLOR TOP BAR
+    ══════════════════════════════════════════ */
+    .tricolor-bar {
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg,
+        var(--saffron) 33.3%,
+        var(--white)   33.3% 66.6%,
+        var(--green)   66.6%
+      );
+      position: fixed;
+      top: 0;
+      z-index: 10000;
+    }
+
+    /* ══════════════════════════════════════════
+       NAVBAR
+    ══════════════════════════════════════════ */
+    nav {
+      position: fixed;
+      top: 4px;
+      left: 0;
+      right: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 64px;
+      background: rgba(8, 12, 20, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow 0.3s ease;
+    }
+
+    nav.scrolled {
+      box-shadow: 0 4px 24px rgba(0,0,0,0.6);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-logo .flag {
+      font-size: 1.6rem;
+      line-height: 1;
+    }
+
+    .nav-logo .brand {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .nav-logo .brand-main {
+      font-family: var(--font-head);
+      font-size: 1.35rem;
+      letter-spacing: 2px;
+      color: var(--saffron);
+    }
+
+    .nav-logo .brand-sub {
+      font-size: 0.65rem;
+      letter-spacing: 3px;
+      color: var(--text-dim);
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-links a {
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--saffron);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--white);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      background: var(--red);
+      color: #fff !important;
+      padding: 8px 20px;
+      border-radius: 4px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease !important;
+    }
+
+    .nav-cta::after { display: none !important; }
+
+    .nav-cta:hover {
+      background: #aa0000 !important;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(204,0,0,0.45) !important;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile Nav */
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      gap: 0;
+      position: fixed;
+      top: 68px;
+      left: 0;
+      right: 0;
+      background: rgba(8,12,20,0.98);
+      border-bottom: 1px solid var(--border);
+      z-index: 9998;
+      padding: 16px 0;
+      transform: translateY(-110%);
+      transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    .mobile-nav.open {
+      transform: translateY(0);
+    }
+
+    .mobile-nav a {
+      padding: 14px 30px;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      border-bottom: 1px solid var(--border);
+      transition: color 0.2s ease, background 0.2s ease;
+    }
+
+    .mobile-nav a:hover {
+      color: var(--saffron);
+      background: rgba(255,98,0,0.06);
+    }
+
+    /* ══════════════════════════════════════════
+       HERO SECTION
+    ══════════════════════════════════════════ */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 20px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Animated background grid */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,98,0,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,98,0,0.04) 1px, transparent 1px);
+      background-size: 50px 50px;
+      animation: gridMove 20s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes gridMove {
+      from { background-position: 0 0; }
+      to   { background-position: 50px 50px; }
+    }
+
+    /* Radial glow */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 50%,
+        rgba(255,98,0,0.08) 0%,
+        transparent 70%
+      );
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 860px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,98,0,0.1);
+      border: 1px solid rgba(255,98,0,0.3);
+      color: var(--saffron);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+      animation: fadeInDown 0.6s ease forwards;
+    }
+
+    .hero-badge .dot {
+      width: 6px;
+      height: 6px;
+      background: var(--saffron);
+      border-radius: 50%;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.7); }
+    }
+
+    .hero-title {
+      font-family: var(--font-head);
+      font-size: clamp(3rem, 9vw, 7rem);
+      line-height: 0.95;
+      letter-spacing: 3px;
+      margin-bottom: 12px;
+      animation: fadeInUp 0.7s 0.1s ease both;
+    }
+
+    .hero-title .line-saffron { color: var(--saffron); }
+    .hero-title .line-green   { color: var(--green); }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      color: var(--text-dim);
+      max-width: 560px;
+      margin: 0 auto 16px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      animation: fadeInUp 0.7s 0.2s ease both;
+    }
+
+    .hero-tagline {
+      font-family: var(--font-head);
+      font-size: clamp(0.85rem, 2vw, 1rem);
+      letter-spacing: 5px;
+      color: var(--gold);
+      margin-bottom: 40px;
+      animation: fadeInUp 0.7s 0.3s ease both;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeInUp 0.7s 0.4s ease both;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--red);
+      color: #fff;
+      padding: 14px 32px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+    }
+
+    .btn-primary:hover {
+      background: #aa0000;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(204,0,0,0.45);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--white);
+      padding: 14px 32px;
+      border: 1.5px solid var(--border);
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: border-color 0.3s, color 0.3s, transform 0.2s;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--saffron);
+      color: var(--saffron);
+      transform: translateY(-3px);
+    }
+
+    /* Stats row */
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      margin-top: 64px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+      animation: fadeInUp 0.7s 0.5s ease both;
+      flex-wrap: wrap;
+    }
+
+    .stat-item { text-align: center; }
+
+    .stat-number {
+      font-family: var(--font-head);
+      font-size: 2.4rem;
+      color: var(--saffron);
+      letter-spacing: 2px;
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-top: 2px;
+    }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      animation: fadeIn 1s 1s ease both;
+    }
+
+    .scroll-indicator span {
+      font-size: 0.65rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+
+    .scroll-arrow {
+      width: 20px;
+      height: 20px;
+      border-right: 2px solid var(--saffron);
+      border-bottom: 2px solid var(--saffron);
+      transform: rotate(45deg);
+      animation: bounce 1.6s ease-in-out infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: rotate(45deg) translateY(0); }
+      50%       { transform: rotate(45deg) translateY(6px); }
+    }
+
+    /* ══════════════════════════════════════════
+       SECTION COMMON
+    ══════════════════════════════════════════ */
+    section { padding: 80px 40px; }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .section-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--saffron);
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-family: var(--font-head);
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      letter-spacing: 2px;
+      line-height: 1;
+    }
+
+    .section-line {
+      width: 56px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--saffron), var(--green));
+      margin: 16px auto 0;
+      border-radius: 2px;
+    }
+
+    /* ══════════════════════════════════════════
+       TICKER / BREAKING NEWS
+    ══════════════════════════════════════════ */
+    .ticker-wrap {
+      background: var(--red);
+      overflow: hidden;
+      padding: 10px 0;
+      position: relative;
+    }
+
+    .ticker-label {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      background: #8B0000;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      z-index: 2;
+      white-space: nowrap;
+    }
+
+    .ticker-content {
+      display: flex;
+      animation: ticker 35s linear infinite;
+      padding-left: 180px;
+      white-space: nowrap;
+    }
+
+    .ticker-content span {
+      padding: 0 40px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .ticker-content span::after {
+      content: ' ॥ ';
+      color: rgba(255,255,255,0.5);
+    }
+
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ══════════════════════════════════════════
+       VIDEOS SECTION
+    ══════════════════════════════════════════ */
+    #videos { background: var(--dark-bg); }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .video-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.35s cubic-bezier(0.4,0,0.2,1),
+                  box-shadow 0.35s ease,
+                  border-color 0.35s ease;
+    }
+
+    .video-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--glow-s);
+      border-color: rgba(255,98,0,0.35);
+    }
+
+    .video-thumb {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: #111;
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .video-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .video-card:hover .video-thumb img {
+      transform: scale(1.06);
+    }
+
+    .play-btn {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.35);
+      transition: background 0.3s ease;
+    }
+
+    .video-card:hover .play-btn {
+      background: rgba(0,0,0,0.2);
+    }
+
+    .play-icon {
+      width: 54px;
+      height: 54px;
+      background: var(--red);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(204,0,0,0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .video-card:hover .play-icon {
+      transform: scale(1.12);
+      box-shadow: 0 6px 28px rgba(204,0,0,0.65);
+    }
+
+    .play-icon svg {
+      width: 20px;
+      height: 20px;
+      fill: #fff;
+      margin-left: 3px;
+    }
+
+    .video-info {
+      padding: 16px 18px 20px;
+    }
+
+    .video-category {
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--saffron);
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .video-title {
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1.4;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+
+    .video-meta {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+    }
+
+    .video-meta span { display: flex; align-items: center; gap: 4px; }
+
+    /* Featured video */
+    .featured-video {
+      max-width: 1200px;
+      margin: 0 auto 48px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 0 40px rgba(0,0,0,0.5);
+    }
+
+    .featured-video iframe {
+      width: 100%;
+      aspect-ratio: 16/9;
+      border: none;
+      display: block;
+    }
+
+    /* ══════════════════════════════════════════
+       CATEGORIES / WINGS
+    ══════════════════════════════════════════ */
+    #wings {
+      background: var(--card-bg);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .wings-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .wing-card {
+      background: var(--dark-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+    }
+
+    .wing-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--saffron);
+      transform: scaleX(0);
+      transition: transform 0.35s ease;
+    }
+
+    .wing-card:hover::before { transform: scaleX(1); }
+
+    .wing-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(255,98,0,0.3);
+      box-shadow: var(--glow-s);
+    }
+
+    .wing-icon {
+      font-size: 2.6rem;
+      margin-bottom: 14px;
+      display: block;
+      filter: drop-shadow(0 0 8px rgba(255,98,0,0.3));
+    }
+
+    .wing-name {
+      font-family: var(--font-head);
+      font-size: 1.25rem;
+      letter-spacing: 2px;
+      color: var(--saffron);
+      margin-bottom: 8px;
+    }
+
+    .wing-desc {
+      font-size: 0.82rem;
+      color: var(--text-dim);
+      line-height: 1.5;
+    }
+
+    .wing-count {
+      display: inline-block;
+      margin-top: 14px;
+      font-size: 0.68rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--green);
+      background: rgba(19,136,8,0.1);
+      border: 1px solid rgba(19,136,8,0.25);
+      padding: 4px 12px;
+      border-radius: 100px;
+    }
+
+    /* ══════════════════════════════════════════
+       LATEST NEWS / CARDS
+    ══════════════════════════════════════════ */
+    #news { background: var(--dark-bg); }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .news-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 24px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .news-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--saffron), var(--green));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .news-card:hover::after { transform: scaleX(1); }
+
+    .news-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255,98,0,0.25);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.4);
+    }
+
+    .news-tag {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--red);
+      padding: 3px 10px;
+      border-radius: 3px;
+      margin-bottom: 14px;
+    }
+
+    .news-tag.green { background: var(--green); }
+    .news-tag.gold  { background: var(--gold); color: #000; }
+
+    .news-headline {
+      font-size: 1.05rem;
+      font-weight: 700;
+      line-height: 1.45;
+      margin-bottom: 10px;
+      color: var(--white);
+    }
+
+    .news-body {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .news-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      letter-spacing: 0.5px;
+    }
+
+    .news-date { color: var(--saffron); font-weight: 600; }
+
+    /* ══════════════════════════════════════════
+       ABOUT SECTION
+    ══════════════════════════════════════════ */
+    #about {
+      background: var(--card-bg);
+      border-top: 1px solid var(--border);
+    }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .about-text .section-header {
+      text-align: left;
+      margin-bottom: 24px;
+    }
+
+    .about-text .section-line { margin: 16px 0 0; }
+
+    .about-text p {
+      color: var(--text-dim);
+      font-size: 0.95rem;
+      line-height: 1.9;
+      margin-bottom: 16px;
+    }
+
+    .about-list {
+      margin: 24px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .about-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    .about-list li .check {
+      width: 22px;
+      height: 22px;
+      background: rgba(19,136,8,0.15);
+      border: 1px solid var(--green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 0.7rem;
+      color: var(--green);
+    }
+
+    .about-visual {
+      position: relative;
+    }
+
+    .about-emblem {
+      width: 100%;
+      aspect-ratio: 1;
+      max-width: 380px;
+      margin: 0 auto;
+      background: radial-gradient(circle at 40% 40%,
+        rgba(255,98,0,0.12), rgba(19,136,8,0.06), transparent 70%
+      );
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .emblem-inner {
+      font-size: 8rem;
+      filter: drop-shadow(0 0 30px rgba(255,98,0,0.4));
+      animation: rotateSlow 30s linear infinite;
+    }
+
+    @keyframes rotateSlow {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    .emblem-ring {
+      position: absolute;
+      inset: -12px;
+      border: 1px dashed rgba(255,98,0,0.2);
+      border-radius: 50%;
+      animation: rotateSlow 20s linear infinite reverse;
+    }
+
+    /* Floating badges */
+    .float-badge {
+      position: absolute;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 16px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .float-badge.top-right {
+      top: 10%;
+      right: -8%;
+      color: var(--saffron);
+      border-color: rgba(255,98,0,0.3);
+      animation: floatY 4s ease-in-out infinite;
+    }
+
+    .float-badge.bottom-left {
+      bottom: 12%;
+      left: -8%;
+      color: var(--green);
+      border-color: rgba(19,136,8,0.3);
+      animation: floatY 5s ease-in-out infinite 1s;
+    }
+
+    @keyframes floatY {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-10px); }
+    }
+
+    /* ══════════════════════════════════════════
+       SUBSCRIBE SECTION
+    ══════════════════════════════════════════ */
+    #subscribe {
+      background: linear-gradient(135deg,
+        rgba(255,98,0,0.12) 0%,
+        rgba(8,12,20,0.95) 40%,
+        rgba(19,136,8,0.10) 100%
+      );
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .subscribe-inner {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .subscribe-icon {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .subscribe-title {
+      font-family: var(--font-head);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+
+    .subscribe-desc {
+      color: var(--text-dim);
+      font-size: 1rem;
+      margin-bottom: 36px;
+      line-height: 1.7;
+    }
+
+    .subscribe-perks {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      margin-bottom: 36px;
+      flex-wrap: wrap;
+    }
+
+    .perk {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-dim);
+    }
+
+    .perk .perk-icon { font-size: 1.1rem; }
+
+    /* ══════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════ */
+    footer {
+      background: #050810;
+      border-top: 1px solid var(--border);
+      padding: 48px 40px 28px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px;
+      max-width: 1100px;
+      margin: 0 auto 40px;
+    }
+
+    .footer-brand .brand-main {
+      font-family: var(--font-head);
+      font-size: 1.6rem;
+      letter-spacing: 3px;
+      color: var(--saffron);
+    }
+
+    .footer-brand p {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      line-height: 1.7;
+      margin-top: 12px;
+      max-width: 300px;
+    }
+
+    .footer-col h4 {
+      font-size: 0.72rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 18px;
+    }
+
+    .footer-col ul {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-col ul li a {
+      font-size: 0.88rem;
+      color: var(--text-dim);
+      transition: color 0.2s ease;
+    }
+
+    .footer-col ul li a:hover { color: var(--saffron); }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.78rem;
+      color: var(--text-dim);
+    }
+
+    .footer-bottom .tricolor-text {
+      font-weight: 700;
+    }
+
+    .footer-bottom .tricolor-text .s { color: var(--saffron); }
+    .footer-bottom .tricolor-text .w { color: var(--white); }
+    .footer-bottom .tricolor-text .g { color: var(--green); }
+
+    /* Social icons */
+    .social-links {
+      display: flex;
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .social-link {
+      width: 38px;
+      height: 38px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: var(--text-dim);
+      transition: background 0.3s, border-color 0.3s, color 0.3s, transform 0.2s;
+    }
+
+    .social-link:hover {
+      background: var(--saffron);
+      border-color: var(--saffron);
+      color: #fff;
+      transform: translateY(-3px);
+    }
+
+    /* ══════════════════════════════════════════
+       SUBSCRIBE POPUP
+    ══════════════════════════════════════════ */
+    #overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      z-index: 99998;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.35s ease, visibility 0.35s ease;
+    }
+
+    #overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .popup-box {
+      background: var(--card-bg);
+      border: 1px solid rgba(255,98,0,0.4);
+      border-radius: 16px;
+      padding: 40px 36px;
+      max-width: 440px;
+      width: 90%;
+      text-align: center;
+      position: relative;
+      transform: scale(0.88) translateY(20px);
+      transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+      box-shadow: 0 24px 64px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,98,0,0.1);
+    }
+
+    #overlay.active .popup-box {
+      transform: scale(1) translateY(0);
+    }
+
+    .popup-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      width: 30px;
+      height: 30px;
+      border-radius: 6px;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+
+    .popup-close:hover {
+      background: var(--red);
+      border-color: var(--red);
+      color: #fff;
+    }
+
+    .popup-emoji { font-size: 3rem; margin-bottom: 16px; display: block; }
+
+    .popup-title {
+      font-family: var(--font-head);
+      font-size: 1.9rem;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+      color: var(--white);
+    }
+
+    .popup-desc {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+
+    .popup-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--red);
+      color: #fff;
+      padding: 13px 28px;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+      width: 100%;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+
+    .popup-btn:hover {
+      background: #aa0000;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(204,0,0,0.45);
+    }
+
+    .popup-skip {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .popup-skip:hover { color: var(--white); }
+
+    /* ══════════════════════════════════════════
+       VIDEO MODAL
+    ══════════════════════════════════════════ */
+    #video-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 99997;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    #video-modal.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-inner {
+      width: 90%;
+      max-width: 900px;
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: -44px;
+      right: 0;
+      background: none;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
+      padding: 6px 16px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+
+    .modal-close:hover { background: rgba(255,255,255,0.1); }
+
+    .modal-iframe-wrap {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: #000;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .modal-iframe-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* ══════════════════════════════════════════
+       ANIMATIONS
+    ══════════════════════════════════════════ */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* Intersection Observer animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+
+    /* ══════════════════════════════════════════
+       BACK TO TOP
+    ══════════════════════════════════════════ */
+    #back-top {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      width: 44px;
+      height: 44px;
+      background: var(--saffron);
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 9990;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(16px);
+      transition: opacity 0.3s, visibility 0.3s, transform 0.3s, background 0.2s;
+      box-shadow: 0 4px 16px rgba(255,98,0,0.4);
+    }
+
+    #back-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    #back-top:hover { background: #e05500; }
+
+    /* ══════════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════════ */
+    @media (max-width: 900px) {
+      .about-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .about-visual { display: none; }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-grid > :first-child {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+
+      .nav-links { display: none; }
+
+      .hamburger { display: flex; }
+
+      .mobile-nav { display: flex; }
+
+      section { padding: 60px 20px; }
+
+      .hero-stats { gap: 28px; }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-actions { flex-direction: column; align-items: center; }
+      .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+      .video-grid { grid-template-columns: 1fr; }
+      .wings-grid { grid-template-columns: 1fr 1fr; }
+      .news-grid  { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ══ TRICOLOR BAR ══ -->
+  <div class="tricolor-bar"></div>
+
+  <!-- ══ NAVBAR ══ -->
+  <nav id="navbar">
+    <a href="#home" class="nav-logo">
+      <span class="flag">🇮🇳</span>
+      <div class="brand">
+        <span class="brand-main">BDC</span>
+        <span class="brand-sub">Bharat Defence Command</span>
+      </div>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#videos">Videos</a></li>
+      <li><a href="#wings">Wings</a></li>
+      <li><a href="#news">News</a></li>
+      <li><a href="#about">About</a></li>
+      <li>
+        <a class="nav-cta"
+           href="https://www.youtube.com/@bharatdefencecommand?sub_confirmation=1"
+           target="_blank" rel="noopener">
+          🔔 Subscribe
+        </a>
+      </li>
+    </ul>
+
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ══ MOBILE NAV ══ -->
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="#home"   onclick="closeMobileNav()">Home</a>
+    <a href="#videos" onclick="closeMobileNav()">Videos</a>
+    <a href="#wings"  onclick="closeMobileNav()">Wings</a>
+    <a href="#news"   onclick="closeMobileNav()">News</a>
+    <a href="#about"  onclick="closeMobileNav()">About</a>
+    <a href="https://www.youtube.com/@bharatdefencecommand?sub_confirmation=1"
+       target="_blank" rel="noopener"
+       style="color:var(--saffron);font-weight:700;">
+      🔔 Subscribe Now
+    </a>
+  </div>
+
+  <!-- ══ HERO ══ -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="dot"></span>
+        LIVE UPDATES · Defence Channel
+      </div>
+
+      <h1 class="hero-title">
+        <span class="line-saffron">BHARAT</span><br>
+        DEFENCE<br>
+        <span class="line-green">COMMAND</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Indian Armed Forces की ताज़ा ख़बरें — Army, Navy, और Airforce की हर अपडेट एक जगह
+      </p>
+
+      <p class="hero-tagline">जय हिन्द · जय भारत · वन्दे मातरम्</p>
+
+      <div class="hero-actions">
+        <a class="btn-primary"
+           href="https://www.youtube.com/@bharatdefencecommand?sub_confirmation=1"
+           target="_blank" rel="noopener">
+          ▶ Subscribe Now
+        </a>
+        <a class="btn-secondary" href="#videos">🎬 Videos देखें</a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-number">50K+</span>
+          <span class="stat-label">Subscribers</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">500+</span>
+          <span class="stat-label">Videos</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">3</span>
+          <span class="stat-label">Defence Wings</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">Daily</span>
+          <span class="stat-label">Updates</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <span>Scroll</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- ══ TICKER ══ -->
+  <div class="ticker-wrap">
+    <div class="ticker-label">🔴 BREAKING</div>
+    <div class="ticker-content">
+      <span>Indian Army ने LOC पर बड़ी सफलता हासिल की</span>
+      <span>IAF ने नए Rafale Squadron को किया शामिल</span>
+      <span>INS Vikrant ने समुद्री अभ्यास पूरा किया</span>
+      <span>DRDO ने नई मिसाइल का सफल परीक्षण किया</span>
+      <span>Agni-V का सफल परीक्षण, पूरे विश्व की नज़र</span>
+      <span>Border infrastructure पर सरकार का बड़ा निर्णय</span>
+      <span>Indian Navy को मिले नए P-8I Poseidon Aircraft</span>
+      <span>Army Day Parade 2026 की तैयारियां शुरू</span>
+      <!-- Duplicate for seamless loop -->
+      <span>Indian Army ने LOC पर बड़ी सफलता हासिल की</span>
+      <span>IAF ने नए Rafale Squadron को किया शामिल</span>
+      <span>INS Vikrant ने समुद्री अभ्यास पूरा किया</span>
+      <span>DRDO ने नई मिसाइल का सफल परीक्षण किया</span>
+      <span>Agni-V का सफल परीक्षण, पूरे विश्व की नज़र</span>
+      <span>Border infrastructure पर सरकार का बड़ा निर्णय</span>
+      <span>Indian Navy को मिले नए P-8I Poseidon Aircraft</span>
+      <span>Army Day Parade 2026 की तैयारियां शुरू</span>
+    </div>
+  </div>
+
+  <!-- ══ VIDEOS ══ -->
+  <section id="videos">
+    <div class="section-header reveal">
+      <span class="section-tag">🎬 Channel</span>
+      <h2 class="section-title">LATEST VIDEOS</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <!-- Featured Video -->
+    <div class="featured-video reveal">
+      <iframe
+        src="https://www.youtube.com/embed/videoseries?list=PLbpi6ZahtOH6Ar_3GPy3workA8g_Sv"
+        title="Bharat Defence Command - Latest Videos"
+        allowfullscreen
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+      </iframe>
+    </div>
+
+    <!-- Video Cards (thumbnail style — clickable) -->
+    <div class="video-grid">
+
+      <div class="video-card reveal reveal-delay-1">
+        <div class="video-thumb" onclick="openVideo('https://www.youtube.com/embed?listType=user_uploads&list=bharatdefencecommand&index=1')">
+          <img src="https://i.ytimg.com/vi/dQw4w9WgXcQ/mqdefault.jpg"
+               alt="Indian Army Latest Update"
+               onerror="this.src='https://placehold.co/480x270/0E1420/FF6200?text=BDC+Video'" />
+          <div class="play-btn">
+            <div class="play-icon">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="video-info">
+          <p class="video-category">Indian Army</p>
+          <h3 class="video-title">LOC पर Indian Army की बड़ी कार्रवाई — पूरी जानकारी</h3>
+          <div class="video-meta">
+            <span>📅 2 दिन पहले</span>
+            <span>👁 1.2L views</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="video-card reveal reveal-delay-2">
+        <div class="video-thumb" onclick="openVideo('https://www.youtube.com/embed?listType=user_uploads&list=bharatdefencecommand&index=2')">
+          <img src="https://i.ytimg.com/vi/dQw4w9WgXcQ/mqdefault.jpg"
+               alt="IAF Rafale Update"
+               onerror="this.src='https://placehold.co/480x270/0E1420/138808?text=BDC+Video'" />
+          <div class="play-btn">
+            <div class="play-icon">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="video-info">
+          <p class="video-category">Indian Air Force</p>
+          <h3 class="video-title">Rafale Fighter Jets का नया Squadron — IAF की ताकत</h3>
+          <div class="video-meta">
+            <span>📅 4 दिन पहले</span>
+            <span>👁 85K views</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="video-card reveal reveal-delay-3">
+        <div class="video-thumb" onclick="openVideo('https://www.youtube.com/embed?listType=user_uploads&list=bharatdefencecommand&index=3')">
+          <img src="https://i.ytimg.com/vi/dQw4w9WgXcQ/mqdefault.jpg"
+               alt="INS Vikrant"
+               onerror="this.src='https://placehold.co/480x270/0E1420/D4A017?text=BDC+Video'" />
+          <div class="play-btn">
+            <div class="play-icon">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="video-info">
+          <p class="video-category">Indian Navy</p>
+          <h3 class="video-title">INS Vikrant — भारत का पहला स्वदेशी Aircraft Carrier</h3>
+          <div class="video-meta">
+            <span>📅 1 हफ्ता पहले</span>
+            <span>👁 2.1L views</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Channel Link -->
+    <div style="text-align:center; margin-top:40px;">
+      <a class="btn-secondary"
+         href="https://www.youtube.com/@bharatdefencecommand"
+         target="_blank" rel="noopener">
+        🔴 All Videos देखें
+      </a>
+    </div>
+  </section>
+
+  <!-- ══ WINGS ══ -->
+  <section id="wings">
+    <div class="section-header reveal">
+      <span class="section-tag">🛡️ Categories</span>
+      <h2 class="section-title">DEFENCE WINGS</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="wings-grid">
+
+      <div class="wing-card reveal reveal-delay-1">
+        <span class="wing-icon">🪖</span>
+        <div class="wing-name">INDIAN ARMY</div>
+        <p class="wing-desc">LOC, LAC और देश की सुरक्षा में तैनात भारतीय थल सेना की हर खबर</p>
+        <span class="wing-count">150+ Videos</span>
+      </div>
+
+      <div class="wing-card reveal reveal-delay-2">
+        <span class="wing-icon">✈️</span>
+        <div class="wing-name">AIR FORCE</div>
+        <p class="wing-desc">Rafale, Tejas, और IAF के नए fighter jets की पूरी जानकारी</p>
+        <span class="wing-count">120+ Videos</span>
+      </div>
+
+      <div class="wing-card reveal reveal-delay-3">
+        <span class="wing-icon">⚓</span>
+        <div class="wing-name">INDIAN NAVY</div>
+        <p class="wing-desc">INS Vikrant से लेकर समुद्री रक्षा तक — Navy की latest updates</p>
+        <span class="wing-count">100+ Videos</span>
+      </div>
+
+      <div class="wing-card reveal reveal-delay-4">
+        <span class="wing-icon">🚀</span>
+        <div class="wing-name">DRDO / MISSILES</div>
+        <p class="wing-desc">Agni, BrahMos, Pralay — भारत के missile program की अपडेट</p>
+        <span class="wing-count">80+ Videos</span>
+      </div>
+
+      <div class="wing-card reveal reveal-delay-5">
+        <span class="wing-icon">🛰️</span>
+        <div class="wing-name">SPACE DEFENCE</div>
+        <p class="wing-desc">ISRO और ASAT — भारत की अंतरिक्ष में रक्षा क्षमता</p>
+        <span class="wing-count">60+ Videos</span>
+      </div>
+
+      <div class="wing-card reveal reveal-delay-1">
+        <span class="wing-icon">🔬</span>
+        <div class="wing-name">TECH & GEAR</div>
+        <p class="wing-desc">Indian defence technology और Atmanirbhar Bharat की latest खबरें</p>
+        <span class="wing-count">90+ Videos</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ NEWS ══ -->
+  <section id="news">
+    <div class="section-header reveal">
+      <span class="section-tag">📰 Updates</span>
+      <h2 class="section-title">LATEST DEFENCE NEWS</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="news-grid">
+
+      <div class="news-card reveal reveal-delay-1">
+        <span class="news-tag">🪖 Army</span>
+        <h3 class="news-headline">Indian Army ने LOC पर Anti-Drone System Deploy किया</h3>
+        <p class="news-body">
+          Line of Control पर बढ़ते drone threats को देखते हुए Indian Army ने नए anti-drone systems लगाए हैं जो दुश्मन के UAVs को track और destroy कर सकते हैं।
+        </p>
+        <div class="news-footer">
+          <span class="news-date">03 May 2026</span>
+          <span>⏱ 3 min read</span>
+        </div>
+      </div>
+
+      <div class="news-card reveal reveal-delay-2">
+        <span class="news-tag green">✈️ IAF</span>
+        <h3 class="news-headline">भारत को मिलेंगे 26 और Rafale Marine Jets</h3>
+        <p class="news-body">
+          France के साथ हुए समझौते के तहत भारत को 26 Rafale Marine jets मिलेंगे जो INS Vikrant पर तैनात किए जाएंगे। यह deal Indian Navy की ताकत को और बढ़ाएगी।
+        </p>
+        <div class="news-footer">
+          <span class="news-date">01 May 2026</span>
+          <span>⏱ 5 min read</span>
+        </div>
+      </div>
+
+      <div class="news-card reveal reveal-delay-3">
+        <span class="news-tag gold">🚀 DRDO</span>
+        <h3 class="news-headline">Agni-V Missile का MIRV Test सफल — China में हलचल</h3>
+        <p class="news-body">
+          DRDO ने Agni-V missile के Multiple Independently Targetable Reentry Vehicle (MIRV) test को सफलतापूर्वक complete किया। इससे भारत की nuclear deterrence capability बहुत मजबूत हुई।
+        </p>
+        <div class="news-footer">
+          <span class="news-date">28 Apr 2026</span>
+          <span>⏱ 4 min read</span>
+        </div>
+      </div>
+
+      <div class="news-card reveal reveal-delay-1">
+        <span class="news-tag">⚓ Navy</span>
+        <h3 class="news-headline">INS Tushil Destroyer भारतीय नौसेना में शामिल</h3>
+        <p class="news-body">
+          Russia में बना INS Tushil stealth frigate Indian Navy में शामिल हो गया है। यह ship advanced weapons और sensor systems से लैस है जो हिंद महासागर में भारत की शक्ति बढ़ाएगी।
+        </p>
+        <div class="news-footer">
+          <span class="news-date">25 Apr 2026</span>
+          <span>⏱ 3 min read</span>
+        </div>
+      </div>
+
+      <div class="news-card reveal reveal-delay-2">
+        <span class="news-tag green">🛰️ Space</span>
+        <h3 class="news-headline">ISRO-DRDO मिलकर बनाएंगे Space Defence Satellite</h3>
+        <p class="news-body">
+          भारत अब space में भी defence को मजबूत करने की तैयारी में है। ISRO और DRDO मिलकर एक dedicated military surveillance satellite launch करने की planning कर रहे हैं।
+        </p>
+        <div class="news-footer">
+          <span class="news-date">22 Apr 2026</span>
+          <span>⏱ 6 min read</span>
+        </div>
+      </div>
+
+      <div class="news-card reveal reveal-delay-3">
+        <span class="news-tag gold">🔬 Tech</span>
+        <h3 class="news-headline">Tejas Mk-2 का First Flight 2026 में — HAL का ऐलान</h3>
+        <p class="news-body">
+          Hindustan Aeronautics Limited ने घोषणा की है कि Tejas Mk-2 fighter jet का पहला उड़ान परीक्षण 2026 के अंत तक होगा। यह jet आधुनिक weapons और AESA radar से लैस होगा।
+        </p>
+        <div class="news-footer">
+          <span class="news-date">19 Apr 2026</span>
+          <span>⏱ 4 min read</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ ABOUT ══ -->
+  <section id="about">
+    <div class="about-inner">
+
+      <div class="about-text">
+        <div class="section-header reveal">
+          <span class="section-tag">📖 About Us</span>
+          <h2 class="section-title">CHANNEL के बारे में</h2>
+          <div class="section-line"></div>
+        </div>
+
+        <p class="reveal">
+          <strong>Bharat Defence Command</strong> एक YouTube channel है जो Indian Armed Forces — Army, Navy, और Airforce की latest news और updates हिंदी में provide करता है।
+        </p>
+
+        <p class="reveal">
+          हमारा मकसद है कि हर भारतीय अपने देश की defence capabilities को जाने और समझे। हम रोज़ नई videos upload करते हैं।
+        </p>
+
+        <ul class="about-list">
+          <li class="reveal reveal-delay-1">
+            <span class="check">✓</span>
+            Daily Defence Updates in Hindi
+          </li>
+          <li class="reveal reveal-delay-2">
+            <span class="check">✓</span>
+            Army, Navy, Airforce Coverage
+          </li>
+          <li class="reveal reveal-delay-3">
+            <span class="check">✓</span>
+            DRDO & Missile Program Analysis
+          </li>
+          <li class="reveal reveal-delay-4">
+            <span class="check">✓</span>
+            100% Authentic & Verified News
+          </li>
+          <li class="reveal reveal-delay-5">
+            <span class="check">✓</span>
+            Atmanirbhar Bharat Defence Tech
+          </li>
+        </ul>
+
+        <a class="btn-primary reveal"
+           href="https://www.youtube.com/@bharatdefencecommand?sub_confirmation=1"
+           target="_blank" rel="noopener"
+           style="margin-top: 8px; display:inline-flex;">
+          🔔 Subscribe करें
+        </a>
+      </div>
+
+      <div class="about-visual reveal">
+        <div class="about-emblem">
+          <div class="emblem-ring"></div>
+          <span class="emblem-inner">🇮🇳</span>
+        </div>
+        <div class="float-badge top-right">⚔️ 500+ Videos</div>
+        <div class="float-badge bottom-left">🛡️ Daily Updates</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ SUBSCRIBE CTA ══ -->
+  <section id="subscribe">
+    <div class="subscribe-inner">
+      <span class="subscribe-icon reveal">🔔</span>
+      <h2 class="subscribe-title reveal">SUBSCRIBE करें<br>और जुड़ें!</h2>
+      <p class="subscribe-desc reveal">
+        भारत की रक्षा की हर ख़बर सबसे पहले पाने के लिए Bharat Defence Command को Subscribe करें।
+        Notification Bell दबाना मत भूलना! 🇮🇳
+      </p>
+
+      <div class="subscribe-perks reveal">
+        <div class="perk"><span class="perk-icon">📺</span> Daily Videos</div>
+        <div class="perk"><span class="perk-icon">🔔</span> Instant Alerts</div>
+        <div class="perk"><span class="perk-icon">🆓</span> Bilkul Free</div>
+        <div class="perk"><span class="perk-icon">🇮🇳</span> Hindi Mein</div>
+      </div>
+
+      <a class="btn-primary reveal"
+         href="https://www.youtube.com/@bharatdefencecommand?sub_confirmation=1"
+         target="_blank" rel="noopener"
+         style="font-size:1.1rem; padding:16px 40px;">
+        ▶ अभी Subscribe करें — यह Free है!
+      </a>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand-main">🇮🇳 BHARAT DEFENCE COMMAND</div>
+        <p>
+          Indian Armed Forces की हर ख़बर हिंदी में। Army, Navy, Airforce और Defence Technology की latest updates के लिए subscribe करें।
+        </p>
+        <div class="social-links">
+          <a class="social-link"
+             href="https://www.youtube.com/@bharatdefencecommand?sub_confirmation=1"
+             target="_blank" rel="noopener"
+             title="YouTube">▶</a>
+          <a class="social-link" href="#" title="Twitter">𝕏</a>
+          <a class="social-link" href="#" title="Telegram">✈</a>
+          <a class="social-link" href="#" title="Instagram">📸</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#videos">Videos</a></li>
+          <li><a href="#wings">Wings</a></li>
+          <li><a href="#news">News</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Defence Topics</h4>
+        <ul>
+          <li><a href="#wings">Indian Army</a></li>
+          <li><a href="#wings">Indian Air Force</a></li>
+          <li><a href="#wings">Indian Navy</a></li>
+          <li><a href="#wings">DRDO & Missiles</a></li>
+          <li><a href="#wings">Space Defence</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Bharat Defence Command. All rights reserved.</span>
+      <span class="tricolor-text">
+        <span class="s">जय </span><span class="w">हिन्द </span><span class="g">🇮🇳</span>
+      </span>
+      <span>Made with ❤️ by Sachin</span>
+    </div>
+  </footer>
+
+  <!-- ══ SUBSCRIBE POPUP ══ -->
+  <div id="overlay" role="dialog" aria-modal="true" aria-labelledby="popup-title">
+    <div class="popup-box">
+      <button class="popup-close" onclick="closePopup()" aria-label="Close">✕</button>
+      <span class="popup-emoji">🔔</span>
+      <h3 class="popup-title" id="popup-title">SUBSCRIBE करें!</h3>
+      <p class="popup-desc">
+        Bharat Defence Command को subscribe करें और Indian Army, Navy, Airforce की latest news सबसे पहले पाएं — बिल्कुल <strong style="color:var(--saffron)">FREE!</strong>
+      </p>
+      <a class="popup-btn"
+         href="https://www.youtube.com/@bharatdefencecommand?sub_confirmation=1"
+         target="_blank" rel="noopener"
+         onclick="closePopup()">
+        ▶ Subscribe Now — Free है!
+      </a>
+      <p class="popup-skip" onclick="closePopup()">नहीं, मुझे updates नहीं चाहिए ✕</p>
+    </div>
+  </div>
+
+  <!-- ══ VIDEO MODAL ══ -->
+  <div id="video-modal" role="dialog" aria-modal="true" aria-label="Video Player">
+    <div class="modal-inner">
+      <button class="modal-close" onclick="closeVideo()">✕ Close</button>
+      <div class="modal-iframe-wrap">
+        <iframe id="modal-iframe" src="" allowfullscreen
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+        </iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ BACK TO TOP ══ -->
+  <button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})"
+          aria-label="Back to top">↑</button>
+
+  <!-- ══ JAVASCRIPT ══ -->
+  <script>
+    /* ── Navbar scroll effect ── */
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    }, { passive: true });
+
+    /* ── Hamburger menu ── */
+    const hamburger  = document.getElementById('hamburger');
+    const mobileNav  = document.getElementById('mobile-nav');
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = hamburger.classList.toggle('open');
+      mobileNav.classList.toggle('open', isOpen);
+      mobileNav.style.display = 'flex';
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    function closeMobileNav() {
+      hamburger.classList.remove('open');
+      mobileNav.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    /* ── Back to top button ── */
+    const backTop = document.getElementById('back-top');
+    window.addEventListener('scroll', () => {
+      backTop.classList.toggle('visible', window.scrollY > 400);
+    }, { passive: true });
+
+    /* ── Intersection Observer (scroll reveal) ── */
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer  = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealEls.forEach(el => observer.observe(el));
+
+    /* ── Subscribe Popup — 6 seconds after load ── */
+    let popupShown = false;
+
+    function showPopup() {
+      if (popupShown) return;
+      popupShown = true;
+      document.getElementById('overlay').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closePopup() {
+      document.getElementById('overlay').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // Show popup after 6 seconds
+    const popupTimer = setTimeout(showPopup, 6000);
+
+    // Close popup on overlay backdrop click
+    document.getElementById('overlay').addEventListener('click', function(e) {
+      if (e.target === this) closePopup();
+    });
+
+    // Close popup on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closePopup();
+        closeVideo();
+      }
+    });
+
+    /* ── Video Modal ── */
+    function openVideo(url) {
+      const modal  = document.getElementById('video-modal');
+      const iframe = document.getElementById('modal-iframe');
+      iframe.src   = url + '&autoplay=1';
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeVideo() {
+      const modal  = document.getElementById('video-modal');
+      const iframe = document.getElementById('modal-iframe');
+      modal.classList.remove('active');
+      iframe.src = '';
+      document.body.style.overflow = '';
+    }
+
+    // Close video modal on backdrop click
+    document.getElementById('video-modal').addEventListener('click', function(e) {
+      if (e.target === this) closeVideo();
+    });
+
+    /* ── Animated counter for hero stats ── */
+    function animateCounter(el, target, suffix = '') {
+      let current = 0;
+      const duration = 1800;
+      const step     = target / (duration / 16);
+
+      const timer = setInterval(() => {
+        current += step;
+        if (current >= target) {
+          current = target;
+          clearInterval(timer);
+        }
+        el.textContent = Math.floor(current) + suffix;
+      }, 16);
+    }
+
+    // Run counters when hero is visible
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const statNums = document.querySelectorAll('.stat-number');
+          // Animate numeric ones
+          animateCounter(statNums[0], 50, 'K+');
+          animateCounter(statNums[1], 500, '+');
+          statsObserver.disconnect();
+        }
+      });
+    }, { threshold: 0.5 });
+
+    const heroStats = document.querySelector('.hero-stats');
+    if (heroStats) statsObserver.observe(heroStats);
+
+    /* ── Active nav link highlight on scroll ── */
+    const sections  = document.querySelectorAll('section[id], div[id="subscribe"]');
+    const navAnchors = document.querySelectorAll('.nav-links a');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(sec => {
+        if (window.scrollY >= sec.offsetTop - 100) {
+          current = sec.id;
+        }
+      });
+
+      navAnchors.forEach(a => {
+        a.style.color = '';
+        if (a.getAttribute('href') === '#' + current) {
+          a.style.color = 'var(--saffron)';
+        }
+      });
+    }, { passive: true });
+  </script>
+
+</body>
+</html>
